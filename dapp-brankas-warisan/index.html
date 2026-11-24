@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brankas Warisan Digital DApp</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="hero">
+        <p class="eyebrow">PRAKTIKUM BLOCKCHAIN • BAB 13 SOLIDITY • REMIX • METAMASK</p>
+        <h1>Brankas Warisan Digital DApp</h1>
+        <p>Frontend ini membaca status dan mengirim transaksi smart contract BrankasWarisan (dead man's switch) pada jaringan Sepolia.</p>
+      </header>
+
+      <section class="card">
+        <h2>1. Koneksi Dompet</h2>
+        <button id="connectBtn">Hubungkan MetaMask</button>
+        <p><strong>Akun:</strong> <span id="account">Belum terhubung</span></p>
+        <p><strong>Jaringan:</strong> <span id="network">-</span></p>
+        <p><strong>Peran akun:</strong> <span id="peran">-</span></p>
+      </section>
+
+      <section class="card">
+        <h2>2. Status Brankas (BrankasWarisan)</h2>
+        <button id="refreshBtn">Muat Ulang Data</button>
+        <dl class="info">
+          <dt>Pemilik</dt><dd id="pemilik">-</dd>
+          <dt>Ahli Waris</dt><dd id="ahliWaris">-</dd>
+          <dt>Saldo Brankas</dt><dd id="saldo">-</dd>
+          <dt>Batas Diam</dt><dd id="batasDiam">-</dd>
+          <dt>Aktivitas Terakhir</dt><dd id="terakhirAktif">-</dd>
+          <dt>Sisa Waktu</dt><dd id="sisaWaktu">-</dd>
+          <dt>Status Klaim</dt><dd id="statusKlaim">-</dd>
+        </dl>
+      </section>
+
+      <section class="card">
+        <h2>3. Transaksi Pemilik (Titip, Tarik, Tandai Aktif)</h2>
+        <form id="formTitip">
+          <label for="jumlahTitip">Jumlah titip (ETH, boleh desimal)</label>
+          <input id="jumlahTitip" type="number" step="any" min="0.000001" placeholder="Contoh: 0.01" />
+          <button type="submit">Titip Dana (titip)</button>
+        </form>
+        <form id="formTarik">
+          <label for="jumlahTarik">Jumlah tarik (ETH, boleh desimal)</label>
+          <input id="jumlahTarik" type="number" step="any" min="0.000001" placeholder="Contoh: 0.005" />
+          <button type="submit">Tarik Dana (tarik)</button>
+        </form>
+        <button id="tandaiBtn" class="secondary">Tandai Aktif (tandaiAktif)</button>
+        <p class="hint">Kontrak menegakkan modifier hanyaPemilik dan belumDiklaim secara on-chain.</p>
+      </section>
+
+      <section class="card">
+        <h2>4. Klaim Warisan (Ahli Waris)</h2>
+        <button id="klaimBtn" class="secondary">Klaim Warisan (klaimWarisan)</button>
+        <p class="hint">Hanya ahli waris, dan hanya setelah batas diam terlewati.</p>
+      </section>
+
+      <div id="status" class="status info">Siap. Klik Hubungkan MetaMask.</div>
+    </main>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
